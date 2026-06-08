@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://vxvmi2ahqrn1"]
+
+[ext_resource type="Texture2D" uid="uid://ce8x5v4a6lmrd" path="res://assets/Gothic Fantasy Cathedral Background.png" id="1_285c3"]
+[ext_resource type="Script" uid="uid://kng1vtsfrpxp" path="res://scripts/necromancer.gd" id="2_4k44q"]
+[ext_resource type="Texture2D" uid="uid://cir5hjkffvip7" path="res://assets/Necromancer_creativekind-Sheet.png" id="2_5w483"]
+[ext_resource type="Texture2D" uid="uid://ukwa1gbfo6y7" path="res://assets/topdown_hospital_Assets/Pngs/maternity_bed.png" id="4_3vsar"]
+[ext_resource type="Texture2D" uid="uid://bp7gxvqm5haw7" path="res://assets/topdown_hospital_Assets/Pngs/room_iv_stand_b.png" id="5_bv2p2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k44q"]
+atlas = ExtResource("2_5w483")
+region = Rect2(0, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctl2h"]
+atlas = ExtResource("2_5w483")
+region = Rect2(160, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vsar"]
+atlas = ExtResource("2_5w483")
+region = Rect2(320, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv2p2"]
+atlas = ExtResource("2_5w483")
+region = Rect2(480, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd4j2"]
+atlas = ExtResource("2_5w483")
+region = Rect2(640, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyhja"]
+atlas = ExtResource("2_5w483")
+region = Rect2(800, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhe2g"]
+atlas = ExtResource("2_5w483")
+region = Rect2(960, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwixh"]
+atlas = ExtResource("2_5w483")
+region = Rect2(1120, 0, 160, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bjls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k44q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctl2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vsar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv2p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd4j2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyhja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhe2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwixh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5w483"]
+radius = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd4j2"]
+size = Vector2(15.041779, 28.3844)
+
+[node name="DonationDrive" type="Node2D" unique_id=1520982139]
+
+[node name="Cathedral" type="Sprite2D" parent="." unique_id=560038730]
+texture = ExtResource("1_285c3")
+centered = false
+
+[node name="Necromancer" type="CharacterBody2D" parent="Cathedral" unique_id=1001755806]
+top_level = true
+position = Vector2(859, 454)
+script = ExtResource("2_4k44q")
+
+[node name="NecroAnimation" type="AnimatedSprite2D" parent="Cathedral/Necromancer" unique_id=1106307604]
+scale = Vector2(2.81, 2.81)
+sprite_frames = SubResource("SpriteFrames_3bjls")
+animation = &"idle"
+frame = 1
+frame_progress = 0.2419991
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cathedral/Necromancer" unique_id=323977449]
+position = Vector2(0, 170)
+shape = SubResource("CircleShape2D_5w483")
+
+[node name="DonorChair" type="StaticBody2D" parent="Cathedral" unique_id=1773310720]
+position = Vector2(506, 405)
+scale = Vector2(5.385, 5.385)
+
+[node name="Chair" type="Sprite2D" parent="Cathedral/DonorChair" unique_id=1959031795]
+texture = ExtResource("4_3vsar")
+centered = false
+
+[node name="BloodIV" type="Sprite2D" parent="Cathedral/DonorChair" unique_id=878584339]
+position = Vector2(-8.09, 0.74280167)
+scale = Vector2(0.99, 1.1606938)
+texture = ExtResource("5_bv2p2")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cathedral/DonorChair" unique_id=3571424]
+position = Vector2(13.37047, 15.227485)
+shape = SubResource("RectangleShape2D_hd4j2")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=119961442]
+anchor_mode = 0
+zoom = Vector2(0.69, 0.69)
