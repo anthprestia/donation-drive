@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Donation Drive"
-run/main_scene="uid://vxvmi2ahqrn1"
+run/main_scene="uid://cmjv3e7d2gsqp"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 

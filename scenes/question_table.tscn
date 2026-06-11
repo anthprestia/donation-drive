@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://brxktd6vy10ry"]
+
+[ext_resource type="Script" uid="uid://dudhq04ruy5xo" path="res://scripts/question_table.gd" id="1_x1tqh"]
+[ext_resource type="Texture2D" uid="uid://cff6j6icep262" path="res://assets/topdown_hospital_Assets/Pngs/lab_medium_table.png" id="2_nrcgg"]
+[ext_resource type="Texture2D" uid="uid://bvpw3kja4v4sf" path="res://assets/books_byBatuhan.png" id="3_hsvf5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngn02"]
+atlas = ExtResource("3_hsvf5")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh7sx"]
+atlas = ExtResource("3_hsvf5")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk55s"]
+atlas = ExtResource("3_hsvf5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qphfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngn02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh7sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk55s")
+}],
+"loop": false,
+"name": &"close",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk55s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh7sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngn02")
+}],
+"loop": false,
+"name": &"open",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwixh"]
+size = Vector2(30, 20)
+
+[node name="QuestionTable1" type="Area2D" unique_id=474875330 node_paths=PackedStringArray("book")]
+scale = Vector2(7.04, 7.04)
+script = ExtResource("1_x1tqh")
+book = NodePath("Book")
+
+[node name="Table" type="Sprite2D" parent="." unique_id=713667959]
+scale = Vector2(1.165, 1.165)
+texture = ExtResource("2_nrcgg")
+
+[node name="Book" type="AnimatedSprite2D" parent="." unique_id=1969524699]
+position = Vector2(0, -3)
+scale = Vector2(0.315, 0.315)
+sprite_frames = SubResource("SpriteFrames_qphfa")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1796093767]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_jwixh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

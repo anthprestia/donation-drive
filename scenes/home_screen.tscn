@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cmjv3e7d2gsqp"]
+
+[ext_resource type="Texture2D" uid="uid://skui2b80oadj" path="res://assets/HomeScreen.png" id="1_lapbl"]
+[ext_resource type="Script" uid="uid://d0o1qq1ugsydg" path="res://scripts/home_screen.gd" id="1_ujmiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjifo"]
+size = Vector2(47, 20)
+
+[node name="HomeScreen" type="Node2D" unique_id=351175105]
+texture_filter = 1
+script = ExtResource("1_ujmiq")
+
+[node name="Node2D" type="Area2D" parent="." unique_id=1675159040]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D" unique_id=1170127599]
+position = Vector2(75.5, 57)
+shape = SubResource("RectangleShape2D_tjifo")
+
+[node name="HomeScreen" type="Sprite2D" parent="." unique_id=1569055123]
+texture_filter = 2
+texture = ExtResource("1_lapbl")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=859957691]
+position = Vector2(76.17, 35.695)
+zoom = Vector2(7.56, 7.56)
+
+[connection signal="input_event" from="Node2D" to="." method="_on_node_2d_input_event"]

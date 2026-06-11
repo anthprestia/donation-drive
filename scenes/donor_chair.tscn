@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dky1pyl70jjed"]
+
+[ext_resource type="Script" uid="uid://c6gs6gkbp83lu" path="res://scripts/donor_chair.gd" id="1_suanq"]
+[ext_resource type="Texture2D" uid="uid://ukwa1gbfo6y7" path="res://assets/topdown_hospital_Assets/Pngs/maternity_bed.png" id="2_hqgob"]
+[ext_resource type="Texture2D" uid="uid://iulsy55t3v5j" path="res://assets/blood_suck_animation.png" id="3_1ct26"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bjls"]
+atlas = ExtResource("3_1ct26")
+region = Rect2(0, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnoed"]
+atlas = ExtResource("3_1ct26")
+region = Rect2(25, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjs5c"]
+atlas = ExtResource("3_1ct26")
+region = Rect2(50, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuva3"]
+atlas = ExtResource("3_1ct26")
+region = Rect2(75, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8ox0"]
+atlas = ExtResource("3_1ct26")
+region = Rect2(100, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edxbt"]
+atlas = ExtResource("3_1ct26")
+region = Rect2(125, 0, 25, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngn02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bjls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnoed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjs5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuva3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8ox0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edxbt")
+}],
+"loop": true,
+"name": &"suck",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd4j2"]
+size = Vector2(15.041779, 28.3844)
+
+[node name="DonorChair" type="Area2D" unique_id=124031299]
+scale = Vector2(5.385, 5.385)
+script = ExtResource("1_suanq")
+
+[node name="Chair" type="Sprite2D" parent="." unique_id=8392590]
+texture = ExtResource("2_hqgob")
+offset = Vector2(5, 0)
+
+[node name="BloodIV" type="AnimatedSprite2D" parent="." unique_id=342987928]
+position = Vector2(-40.11142, -5.5710306)
+scale = Vector2(0.99, 1.1606938)
+sprite_frames = SubResource("SpriteFrames_ngn02")
+animation = &"suck"
+frame = 3
+frame_progress = 0.7240678
+offset = Vector2(34.935, 0.815)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584956466]
+position = Vector2(5.38533, -1.8570099)
+shape = SubResource("RectangleShape2D_hd4j2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
