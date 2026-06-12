@@ -1,181 +1,9 @@
 [gd_scene format=3 uid="uid://vxvmi2ahqrn1"]
 
 [ext_resource type="Texture2D" uid="uid://ce8x5v4a6lmrd" path="res://assets/Gothic Fantasy Cathedral Background.png" id="1_285c3"]
-[ext_resource type="Script" uid="uid://kng1vtsfrpxp" path="res://scripts/necromancer.gd" id="2_4k44q"]
-[ext_resource type="Texture2D" uid="uid://cir5hjkffvip7" path="res://assets/Necromancer_creativekind-Sheet.png" id="2_5w483"]
-[ext_resource type="Texture2D" uid="uid://ukwa1gbfo6y7" path="res://assets/topdown_hospital_Assets/Pngs/maternity_bed.png" id="4_3vsar"]
-[ext_resource type="Script" uid="uid://c6gs6gkbp83lu" path="res://scripts/donor_chair.gd" id="4_bv2p2"]
-[ext_resource type="Texture2D" uid="uid://iulsy55t3v5j" path="res://assets/blood_suck_animation.png" id="6_bv2p2"]
-[ext_resource type="Texture2D" uid="uid://cff6j6icep262" path="res://assets/topdown_hospital_Assets/Pngs/lab_medium_table.png" id="7_fyhja"]
-[ext_resource type="Script" uid="uid://dudhq04ruy5xo" path="res://scripts/question_table.gd" id="7_lhe2g"]
-[ext_resource type="Texture2D" uid="uid://bvpw3kja4v4sf" path="res://assets/books_byBatuhan.png" id="8_lhe2g"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4k44q"]
-atlas = ExtResource("2_5w483")
-region = Rect2(0, 0, 160, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctl2h"]
-atlas = ExtResource("2_5w483")
-region = Rect2(160, 0, 160, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vsar"]
-atlas = ExtResource("2_5w483")
-region = Rect2(320, 0, 160, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bv2p2"]
-atlas = ExtResource("2_5w483")
-region = Rect2(480, 0, 160, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hd4j2"]
-atlas = ExtResource("2_5w483")
-region = Rect2(640, 0, 160, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyhja"]
-atlas = ExtResource("2_5w483")
-region = Rect2(800, 0, 160, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhe2g"]
-atlas = ExtResource("2_5w483")
-region = Rect2(960, 0, 160, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jwixh"]
-atlas = ExtResource("2_5w483")
-region = Rect2(1120, 0, 160, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3bjls"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4k44q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ctl2h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3vsar")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bv2p2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hd4j2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fyhja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lhe2g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jwixh")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhe2g"]
-radius = 22.0
-height = 130.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bjls"]
-atlas = ExtResource("6_bv2p2")
-region = Rect2(0, 0, 25, 35)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnoed"]
-atlas = ExtResource("6_bv2p2")
-region = Rect2(25, 0, 25, 35)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjs5c"]
-atlas = ExtResource("6_bv2p2")
-region = Rect2(50, 0, 25, 35)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cuva3"]
-atlas = ExtResource("6_bv2p2")
-region = Rect2(75, 0, 25, 35)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8ox0"]
-atlas = ExtResource("6_bv2p2")
-region = Rect2(100, 0, 25, 35)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_edxbt"]
-atlas = ExtResource("6_bv2p2")
-region = Rect2(125, 0, 25, 35)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ngn02"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3bjls")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dnoed")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sjs5c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cuva3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8ox0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_edxbt")
-}],
-"loop": true,
-"name": &"suck",
-"speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd4j2"]
-size = Vector2(15.041779, 28.3844)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ngn02"]
-atlas = ExtResource("8_lhe2g")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uh7sx"]
-atlas = ExtResource("8_lhe2g")
-region = Rect2(128, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk55s"]
-atlas = ExtResource("8_lhe2g")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qphfa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ngn02")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uh7sx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uk55s")
-}],
-"loop": false,
-"name": &"close",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uk55s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uh7sx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ngn02")
-}],
-"loop": false,
-"name": &"open",
-"speed": 2.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwixh"]
-size = Vector2(30, 20)
+[ext_resource type="PackedScene" uid="uid://brxktd6vy10ry" path="res://scenes/question_table.tscn" id="3_ctl2h"]
+[ext_resource type="PackedScene" uid="uid://cs8axwxy0ivw1" path="res://scenes/necromancer_pc.tscn" id="4_3vsar"]
+[ext_resource type="PackedScene" uid="uid://dky1pyl70jjed" path="res://scenes/donor_chair.tscn" id="10_jwixh"]
 
 [node name="DonationDrive" type="Node2D" unique_id=1520982139]
 
@@ -183,89 +11,21 @@ size = Vector2(30, 20)
 texture = ExtResource("1_285c3")
 centered = false
 
-[node name="Necromancer" type="CharacterBody2D" parent="Cathedral" unique_id=1001755806]
-top_level = true
-position = Vector2(859, 454)
-script = ExtResource("2_4k44q")
-
-[node name="NecroAnimation" type="AnimatedSprite2D" parent="Cathedral/Necromancer" unique_id=1106307604]
-scale = Vector2(2.81, 2.81)
-sprite_frames = SubResource("SpriteFrames_3bjls")
-animation = &"idle"
-frame = 1
-frame_progress = 0.2419991
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cathedral/Necromancer" unique_id=323977449]
-position = Vector2(0, 80)
-shape = SubResource("CapsuleShape2D_lhe2g")
-
-[node name="DonorChair" type="Area2D" parent="Cathedral" unique_id=1258780785]
-position = Vector2(506, 405)
-scale = Vector2(5.385, 5.385)
-script = ExtResource("4_bv2p2")
-
-[node name="Chair" type="Sprite2D" parent="Cathedral/DonorChair" unique_id=1959031795]
-texture = ExtResource("4_3vsar")
-centered = false
-
-[node name="BloodIV" type="AnimatedSprite2D" parent="Cathedral/DonorChair" unique_id=1268750834]
-position = Vector2(-0.9285026, 18.570099)
-scale = Vector2(0.99, 1.1606938)
-sprite_frames = SubResource("SpriteFrames_ngn02")
-animation = &"suck"
-frame_progress = 0.87479085
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cathedral/DonorChair" unique_id=3571424]
-position = Vector2(13.37047, 15.227485)
-shape = SubResource("RectangleShape2D_hd4j2")
-
-[node name="QuestionTable1" type="Area2D" parent="Cathedral" unique_id=8881470 node_paths=PackedStringArray("book")]
-position = Vector2(1447, 545)
-scale = Vector2(7.04, 7.04)
-script = ExtResource("7_lhe2g")
-book = NodePath("Book")
-
-[node name="Table" type="Sprite2D" parent="Cathedral/QuestionTable1" unique_id=1479811934]
-scale = Vector2(1.165, 1.165)
-texture = ExtResource("7_fyhja")
-
-[node name="Book" type="AnimatedSprite2D" parent="Cathedral/QuestionTable1" unique_id=1443646146]
-position = Vector2(0, -3)
-scale = Vector2(0.315, 0.315)
-sprite_frames = SubResource("SpriteFrames_qphfa")
-animation = &"open"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cathedral/QuestionTable1" unique_id=1512085687]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_jwixh")
-
-[node name="QuestionTable2" type="Area2D" parent="Cathedral" unique_id=669892026 node_paths=PackedStringArray("book")]
-position = Vector2(1325.9999, 754)
-scale = Vector2(7.04, 7.04)
-script = ExtResource("7_lhe2g")
-book = NodePath("Book")
-
-[node name="Table" type="Sprite2D" parent="Cathedral/QuestionTable2" unique_id=1561952347]
-scale = Vector2(1.165, 1.165)
-texture = ExtResource("7_fyhja")
-
-[node name="Book" type="AnimatedSprite2D" parent="Cathedral/QuestionTable2" unique_id=1014402901]
-position = Vector2(0, -3)
-scale = Vector2(0.315, 0.315)
-sprite_frames = SubResource("SpriteFrames_qphfa")
-animation = &"open"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cathedral/QuestionTable2" unique_id=985538005]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_jwixh")
-
 [node name="Camera" type="Camera2D" parent="." unique_id=119961442]
 anchor_mode = 0
 zoom = Vector2(0.69, 0.69)
 
-[connection signal="body_entered" from="Cathedral/DonorChair" to="Cathedral/DonorChair" method="_on_body_entered"]
-[connection signal="body_exited" from="Cathedral/DonorChair" to="Cathedral/DonorChair" method="_on_body_exited"]
-[connection signal="body_entered" from="Cathedral/QuestionTable1" to="Cathedral/QuestionTable1" method="_on_body_entered"]
-[connection signal="body_exited" from="Cathedral/QuestionTable1" to="Cathedral/QuestionTable1" method="_on_body_exited"]
-[connection signal="body_entered" from="Cathedral/QuestionTable2" to="Cathedral/QuestionTable2" method="_on_body_entered"]
-[connection signal="body_exited" from="Cathedral/QuestionTable2" to="Cathedral/QuestionTable2" method="_on_body_exited"]
+[node name="DonorChair" parent="." unique_id=124031299 instance=ExtResource("10_jwixh")]
+position = Vector2(565, 495)
+
+[node name="DonorChair2" parent="." unique_id=2100925093 instance=ExtResource("10_jwixh")]
+position = Vector2(258, 627)
+
+[node name="QuestionTable1" parent="." unique_id=474875330 instance=ExtResource("3_ctl2h")]
+position = Vector2(1423, 561)
+
+[node name="QuestionTable2" parent="." unique_id=1269857333 instance=ExtResource("3_ctl2h")]
+position = Vector2(1291, 791)
+
+[node name="NecromancerPC" parent="." unique_id=1828071194 instance=ExtResource("4_3vsar")]
+position = Vector2(747, 735)

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cs8axwxy0ivw1"]
+
+[ext_resource type="Script" uid="uid://kng1vtsfrpxp" path="res://scripts/necromancer.gd" id="1_qfcgf"]
+[ext_resource type="Texture2D" uid="uid://cir5hjkffvip7" path="res://assets/Necromancer_creativekind-Sheet.png" id="2_coq4t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k44q"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(0, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctl2h"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(160, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vsar"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(320, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv2p2"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(480, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd4j2"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(640, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyhja"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(800, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhe2g"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(960, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwixh"]
+atlas = ExtResource("2_coq4t")
+region = Rect2(1120, 0, 160, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bjls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k44q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctl2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vsar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv2p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd4j2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyhja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhe2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwixh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lhe2g"]
+radius = 15.0
+
+[node name="NecromancerPC" type="CharacterBody2D" unique_id=1828071194]
+top_level = true
+script = ExtResource("1_qfcgf")
+
+[node name="NecroAnimation" type="AnimatedSprite2D" parent="." unique_id=1134713326]
+scale = Vector2(2.81, 2.81)
+sprite_frames = SubResource("SpriteFrames_3bjls")
+animation = &"idle"
+frame = 1
+frame_progress = 0.2419991
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=996903588]
+position = Vector2(0, 130)
+shape = SubResource("CircleShape2D_lhe2g")
