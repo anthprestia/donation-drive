@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcml4nulm83es"]
+
+[ext_resource type="Script" uid="uid://dj4rc8d24jfdk" path="res://waiting_chair.gd" id="1_8qrda"]
+[ext_resource type="Texture2D" uid="uid://br7pck11xe3xk" path="res://assets/waiting_chair.png" id="2_h4jk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhcud"]
+size = Vector2(1, 32)
+
+[node name="waiting_chair" type="Area2D" unique_id=1886900249]
+script = ExtResource("1_8qrda")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1506019708]
+texture = ExtResource("2_h4jk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=642480679]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_vhcud")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

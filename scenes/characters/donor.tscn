@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cryu78pe2q2s0"]
+
+[ext_resource type="SpriteFrames" uid="uid://wkpokb3lit33" path="res://assets/animatedsprites/adam_spriteframes.tres" id="1_7u8a5"]
+[ext_resource type="Script" uid="uid://b5bc6ens5lps8" path="res://scripts/donor.gd" id="1_624cm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u8a5"]
+size = Vector2(16, 23)
+
+[node name="donor" type="CharacterBody2D" unique_id=1989710478]
+input_pickable = true
+script = ExtResource("1_624cm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1898752083]
+z_index = 1
+sprite_frames = ExtResource("1_7u8a5")
+animation = &"idleFront"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1196960880]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_7u8a5")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

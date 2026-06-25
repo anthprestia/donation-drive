@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dky1pyl70jjed"]
 
 [ext_resource type="Script" uid="uid://c6gs6gkbp83lu" path="res://scripts/donor_chair.gd" id="1_suanq"]
-[ext_resource type="Texture2D" uid="uid://ukwa1gbfo6y7" path="res://assets/topdown_hospital_Assets/Pngs/maternity_bed.png" id="2_hqgob"]
+[ext_resource type="Texture2D" path="res://assets/topdown_hospital_Assets/Pngs/maternity_bed.png" id="2_hqgob"]
 [ext_resource type="Texture2D" uid="uid://iulsy55t3v5j" path="res://assets/blood_suck_animation.png" id="3_1ct26"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3bjls"]
@@ -58,7 +58,6 @@ animations = [{
 size = Vector2(15.041779, 28.3844)
 
 [node name="DonorChair" type="Area2D" unique_id=124031299]
-scale = Vector2(5.385, 5.385)
 script = ExtResource("1_suanq")
 
 [node name="Chair" type="Sprite2D" parent="." unique_id=8392590]

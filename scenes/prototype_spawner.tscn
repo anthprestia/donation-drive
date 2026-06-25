@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://maanxnoeeuq8"]
+
+[ext_resource type="Script" uid="uid://cd7s18m60x38q" path="res://scripts/prototype_spawner.gd" id="1_83nfe"]
+[ext_resource type="PackedScene" uid="uid://cryu78pe2q2s0" path="res://scenes/characters/donor.tscn" id="2_xjdny"]
+[ext_resource type="PackedScene" uid="uid://bcml4nulm83es" path="res://scenes/stations/waiting_chair.tscn" id="3_nvvue"]
+
+[sub_resource type="Curve2D" id="Curve2D_duomv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0)
+}
+point_count = 2
+
+[node name="prototype_spawner" type="Node" unique_id=1644011092]
+script = ExtResource("1_83nfe")
+donor_scene = ExtResource("2_xjdny")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=579487228]
+curve = SubResource("Curve2D_duomv")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1297557841]
+position = Vector2(-1, 3)
+offset = Vector2(41.82, 0)
+zoom = Vector2(4.78, 4.78)
+
+[node name="waiting_chair" parent="." unique_id=1886900249 instance=ExtResource("3_nvvue")]
+position = Vector2(24, -22)

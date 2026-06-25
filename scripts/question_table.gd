@@ -2,6 +2,10 @@ extends Area2D
 
 @export var book: AnimatedSprite2D
 
+var donor_sat: Donor = null
+var is_available: bool = true
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +18,19 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	book.play("open")
+	if body is Donor:
+		if is_available:
+			body.station_preview(self)
+	
+	#book.play("open")
 
 func _on_body_exited(body: Node2D) -> void:
-	book.play("close")
+	if body is Donor:
+		if is_available:
+			body.station_withdraw(self)
+	
+	#book.play("close")
+	
+func sit(donor: Donor) -> void:
+	self.donor_sat = donor
+	self.is_available = false

@@ -1,0 +1,65 @@
+extends Node
+
+# ClinicController
+
+# this class will be used to keep track of each Clinic
+# tracks things like:
+# waiting room chairs available, total donors in the shop
+# available staff
+# player upgrades
+# donor spawner
+# donor stations
+# 'check-out'
+
+# the class is in charge of defining and handling processes on the
+# 'game board'. Gameplay logic may or may not be placed in here
+
+# Will be able to load in a LevelController to play the game
+
+#idk make all the shit this is likely a tilemaplayer in whatever level it is
+
+@export var donor_scene: PackedScene
+
+# number of waiting 
+var waiting_donors = 0
+@export var spawn_timer: Timer
+var spawn_ready = false
+@onready var num_chairs = $WaitingRoom.get_child_count()
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	
+	spawn_timer = Timer.new()
+	spawn_timer.wait_time = 1.0
+	spawn_timer.autostart = true
+	spawn_timer.timeout.connect(_spawn_timeout)
+	
+	add_child(spawn_timer)
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if self.spawn_ready:
+		_spawn_mob()
+		self.spawn_ready = false
+
+func _spawn_timeout() -> void:
+	if not self.spawn_ready and (num_chairs > waiting_donors):
+		self.spawn_ready = true
+
+func _spawn_mob() -> void:
+	# instantiate the mob_scene
+	var donor = donor_scene.instantiate()
+	var path = $EntryPath
+	var walker = PathFollow2D.new()
+	
+	self.waiting_donors += 1
+	
+	donor.set_walker(walker)
+	
+	walker.add_child(donor)
+	path.add_child(walker)
+
+
+func _on_waiting_chair_waiting_available() -> void:
+	self.waiting_donors -= 1
