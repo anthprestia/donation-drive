@@ -1,30 +1,30 @@
-extends Node2D
+class_name Station
+
+extends Area2D
 
 # can use the collision shape we defined in the scene tree
 @onready var checker: CollisionShape2D = $CollisionShape2D
 
-signal waiting_available
-
 var donor_sat: Donor
 var available: bool = true
+var progress: int = 0
+var increment: int = 5
 
-# Called when the node enters the scene tree for the first time.
+signal progress_complete
+
+
 func _ready() -> void:
 	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
 	# check if its a donor walking past the chair
 	if body is Donor:
-		# check if the chair is available
-		if available:
-			# make the donor sit
-			sit(body)
-			print('ding')
-			
+		if is_available:
+			body.station_preview(self)
+
 func is_available() -> bool:
 	return available
 
@@ -32,10 +32,11 @@ func sit(donor: Donor) -> void:
 	self.donor_sat = donor
 	self.available = false
 	donor.sit(self)
+	
+func increment_progress() -> void:
+	self.progress = self.progress + self.increment
 
 func get_up(donor: Donor) -> void:
 	if self.donor_sat == donor:
 		self.donor_sat = null
 		self.available = true
-		# notify the ClinicController that we're available
-		waiting_available.emit()

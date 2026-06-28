@@ -36,6 +36,13 @@ func _ready() -> void:
 	
 	add_child(spawn_timer)
 	
+	# check the WaitingChair in WaitingRoom and manually attach
+	# each of their "waiting_room_decrement" signals
+	var waiting_room = get_node("WaitingRoom")
+	
+	for chair in waiting_room.get_children():
+		chair.waiting_room_decrement.connect(self._waiting_room_decrement)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,6 +67,5 @@ func _spawn_mob() -> void:
 	walker.add_child(donor)
 	path.add_child(walker)
 
-
-func _on_waiting_chair_waiting_available() -> void:
+func _waiting_room_decrement() -> void:
 	self.waiting_donors -= 1

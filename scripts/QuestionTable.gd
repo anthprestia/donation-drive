@@ -1,6 +1,8 @@
-extends Area2D
+class_name QuestionTable
 
-@onready var blood_iv: AnimatedSprite2D = $BloodIV
+extends Station
+
+@export var book: AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,8 +12,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func _on_body_entered(body: Node2D) -> void:
-	blood_iv.play('suck')
+	if body is Donor:
+		if is_available:
+			body.station_preview(self)
+	
+	#book.play("open")
 
 func _on_body_exited(body: Node2D) -> void:
-	blood_iv.stop()
+	if body is Donor:
+		if is_available:
+			body.station_withdraw(self)
+	
+	#book.play("close")

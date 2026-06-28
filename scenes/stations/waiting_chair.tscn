@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcml4nulm83es"]
 
-[ext_resource type="Script" uid="uid://dj4rc8d24jfdk" path="res://waiting_chair.gd" id="1_8qrda"]
+[ext_resource type="Script" uid="uid://dj4rc8d24jfdk" path="res://scripts/WaitingChair.gd" id="1_8qrda"]
 [ext_resource type="Texture2D" uid="uid://br7pck11xe3xk" path="res://assets/waiting_chair.png" id="2_h4jk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhcud"]

@@ -33,13 +33,16 @@ tile_map_data = PackedByteArray("AAD///7/BAAAAAEAAAD/////BAAAAAIAAAD//wAABAAAAAM
 tile_set = ExtResource("1_satx0")
 
 [node name="DonorChair" parent="Clinic" unique_id=124031299 instance=ExtResource("2_0t8x2")]
-position = Vector2(36, 135)
+position = Vector2(131, 106)
 
 [node name="QuestionTable1" parent="Clinic" unique_id=474875330 instance=ExtResource("3_u5kpk")]
 position = Vector2(214, 98)
 
+[node name="QuestionTable2" parent="Clinic" unique_id=911696850 instance=ExtResource("3_u5kpk")]
+position = Vector2(205.42, 152.01)
+
 [node name="NecromancerPC" parent="Clinic" unique_id=1828071194 instance=ExtResource("5_piajy")]
-position = Vector2(106, 111)
+position = Vector2(15, -25)
 
 [node name="EntryPath" type="Path2D" parent="Clinic" unique_id=1460848695]
 curve = SubResource("Curve2D_l6efi")
@@ -65,4 +68,4 @@ wait_time = 5.0
 position = Vector2(128, 118.355)
 zoom = Vector2(2.165, 2.165)
 
-[connection signal="waiting_available" from="Clinic/WaitingRoom/waiting_chair" to="Clinic" method="_on_waiting_chair_waiting_available"]
+[connection signal="waiting_room_decrement" from="Clinic/WaitingRoom/waiting_chair" to="Clinic" method="_on_waiting_chair_waiting_room_decrement"]

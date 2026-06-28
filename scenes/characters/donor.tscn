@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cryu78pe2q2s0"]
 
 [ext_resource type="SpriteFrames" uid="uid://wkpokb3lit33" path="res://assets/animatedsprites/adam_spriteframes.tres" id="1_7u8a5"]
-[ext_resource type="Script" uid="uid://b5bc6ens5lps8" path="res://scripts/donor.gd" id="1_624cm"]
+[ext_resource type="Script" uid="uid://b5bc6ens5lps8" path="res://scripts/Donor.gd" id="1_624cm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7u8a5"]
 size = Vector2(16, 23)

@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		else:
 			self.walker.progress_ratio = new
 			
-	if selected and draggable:
+	if self.selected and self.draggable:
 		self.drag_donor()
 		
 
@@ -63,7 +63,7 @@ func sit(station: Node2D) -> void:
 	
 	
 func drag_donor() -> void:
-	position =  get_global_mouse_position() + mouse_offset
+	self.position =  get_global_mouse_position() + mouse_offset
 
 func station_preview(station: Node2D) -> void:
 	# check if this is my next station. if it is then we're eligible
@@ -81,11 +81,15 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			if self.draggable:
 				self.mouse_offset = position - get_global_mouse_position()
 				self.selected = true
+				#self.top_level = true
 		else:
 			if self.hovered_station:
+				self.current_station.get_up(self)
 				self.current_station = hovered_station
-				self.reparent(self.hovered_station)
+				self.reparent(self.current_station)
 				self.hovered_station = null
-			position = Vector2.ZERO
+			self.position = Vector2.ZERO
 			self.mouse_offset - Vector2.ZERO
-			selected = false
+			self.selected = false
+			#self.top_level
+			
