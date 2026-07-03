@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cyw57kf43fy3k"]
+
+[ext_resource type="Script" uid="uid://cwwabhmnqjmjt" path="res://PreCheckinChair.gd" id="1_2xuip"]
+[ext_resource type="Texture2D" uid="uid://bjtpawh3ukx0d" path="res://assets/toilet.png" id="2_ofwxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofwxc"]
+size = Vector2(16, 32)
+
+[node name="PreCheckinChair" type="Area2D" unique_id=467517005]
+script = ExtResource("1_2xuip")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1038325030]
+scale = Vector2(0.145, 0.099939026)
+texture = ExtResource("2_ofwxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=100449914]
+shape = SubResource("RectangleShape2D_ofwxc")

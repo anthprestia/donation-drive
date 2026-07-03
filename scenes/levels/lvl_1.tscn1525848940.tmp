@@ -40,7 +40,6 @@ position = Vector2(214, 98)
 
 [node name="QuestionTable2" parent="Clinic" unique_id=911696850 instance=ExtResource("3_u5kpk")]
 position = Vector2(205.42, 152.01)
-needs_assistance = true
 
 [node name="NecromancerPC" parent="Clinic" unique_id=1828071194 instance=ExtResource("5_piajy")]
 position = Vector2(15, -25)

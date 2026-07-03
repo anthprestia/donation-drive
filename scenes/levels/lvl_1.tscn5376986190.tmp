@@ -52,15 +52,19 @@ curve = SubResource("Curve2D_l6efi")
 
 [node name="waiting_chair" parent="Clinic/WaitingRoom" unique_id=1886900249 instance=ExtResource("6_v45sh")]
 position = Vector2(189, -5)
+needs_assistance = null
 
 [node name="waiting_chair2" parent="Clinic/WaitingRoom" unique_id=1409620549 instance=ExtResource("6_v45sh")]
 position = Vector2(207, -5)
+needs_assistance = null
 
 [node name="waiting_chair3" parent="Clinic/WaitingRoom" unique_id=499335984 instance=ExtResource("6_v45sh")]
 position = Vector2(225, -5)
+needs_assistance = null
 
 [node name="waiting_chair4" parent="Clinic/WaitingRoom" unique_id=280309811 instance=ExtResource("6_v45sh")]
 position = Vector2(243, -5)
+needs_assistance = null
 
 [node name="Timer" type="Timer" parent="Clinic" unique_id=951037648]
 wait_time = 5.0
