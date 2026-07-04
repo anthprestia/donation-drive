@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://cw00p083tk4l3" path="res://scripts/ClinicController.gd" id="1_v45sh"]
 [ext_resource type="PackedScene" uid="uid://dky1pyl70jjed" path="res://scenes/stations/donor_chair.tscn" id="2_0t8x2"]
 [ext_resource type="PackedScene" uid="uid://cryu78pe2q2s0" path="res://scenes/characters/donor.tscn" id="2_l6efi"]
-[ext_resource type="PackedScene" uid="uid://brxktd6vy10ry" path="res://scenes/stations/question_table.tscn" id="3_u5kpk"]
+[ext_resource type="PackedScene" uid="uid://brxktd6vy10ry" path="res://scenes/stations/QuestionTable.tscn" id="3_u5kpk"]
 [ext_resource type="PackedScene" uid="uid://cs8axwxy0ivw1" path="res://scenes/characters/necromancer_pc.tscn" id="5_piajy"]
-[ext_resource type="PackedScene" uid="uid://bcml4nulm83es" path="res://scenes/stations/waiting_chair.tscn" id="6_v45sh"]
+[ext_resource type="PackedScene" uid="uid://bcml4nulm83es" path="res://scenes/stations/WaitingChair.tscn" id="6_v45sh"]
+[ext_resource type="PackedScene" uid="uid://cyw57kf43fy3k" path="res://scenes/stations/PreCheckinChair.tscn" id="8_3u0n1"]
 
 [sub_resource type="Curve2D" id="Curve2D_l6efi"]
 _data = {
@@ -33,14 +34,17 @@ tile_map_data = PackedByteArray("AAD///7/BAAAAAEAAAD/////BAAAAAIAAAD//wAABAAAAAM
 tile_set = ExtResource("1_satx0")
 
 [node name="DonorChair" parent="Clinic" unique_id=124031299 instance=ExtResource("2_0t8x2")]
-position = Vector2(131, 106)
+position = Vector2(67, 113)
 
 [node name="QuestionTable1" parent="Clinic" unique_id=474875330 instance=ExtResource("3_u5kpk")]
-position = Vector2(214, 98)
+position = Vector2(214, 104)
 
 [node name="QuestionTable2" parent="Clinic" unique_id=911696850 instance=ExtResource("3_u5kpk")]
 position = Vector2(205.42, 152.01)
 needs_assistance = true
+
+[node name="PreCheckinChair" parent="Clinic" unique_id=467517005 instance=ExtResource("8_3u0n1")]
+position = Vector2(128, 111)
 
 [node name="NecromancerPC" parent="Clinic" unique_id=1828071194 instance=ExtResource("5_piajy")]
 position = Vector2(15, -25)
@@ -50,16 +54,16 @@ curve = SubResource("Curve2D_l6efi")
 
 [node name="WaitingRoom" type="Node" parent="Clinic" unique_id=1453362010]
 
-[node name="waiting_chair" parent="Clinic/WaitingRoom" unique_id=1886900249 instance=ExtResource("6_v45sh")]
+[node name="WaitingChair" parent="Clinic/WaitingRoom" unique_id=1886900249 instance=ExtResource("6_v45sh")]
 position = Vector2(189, -5)
 
-[node name="waiting_chair2" parent="Clinic/WaitingRoom" unique_id=1409620549 instance=ExtResource("6_v45sh")]
+[node name="WaitingChair2" parent="Clinic/WaitingRoom" unique_id=1409620549 instance=ExtResource("6_v45sh")]
 position = Vector2(207, -5)
 
-[node name="waiting_chair3" parent="Clinic/WaitingRoom" unique_id=499335984 instance=ExtResource("6_v45sh")]
+[node name="WaitingChair3" parent="Clinic/WaitingRoom" unique_id=499335984 instance=ExtResource("6_v45sh")]
 position = Vector2(225, -5)
 
-[node name="waiting_chair4" parent="Clinic/WaitingRoom" unique_id=280309811 instance=ExtResource("6_v45sh")]
+[node name="WaitingChair4" parent="Clinic/WaitingRoom" unique_id=280309811 instance=ExtResource("6_v45sh")]
 position = Vector2(243, -5)
 
 [node name="Timer" type="Timer" parent="Clinic" unique_id=951037648]

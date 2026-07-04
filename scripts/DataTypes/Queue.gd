@@ -19,6 +19,8 @@ func size() -> int:
 	return self.queueSize
 	
 func get_front():
+	if is_empty():
+		return null
 	return front.data
 	
 func compare_front(data):

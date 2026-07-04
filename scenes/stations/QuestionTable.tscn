@@ -51,7 +51,7 @@ animations = [{
 custom_solver_bias = 0.1
 size = Vector2(30, 20)
 
-[node name="QuestionTable1" type="Area2D" unique_id=474875330 node_paths=PackedStringArray("book")]
+[node name="QuestionTable" type="Area2D" unique_id=474875330 node_paths=PackedStringArray("book")]
 script = ExtResource("1_x1tqh")
 book = NodePath("Book")
 

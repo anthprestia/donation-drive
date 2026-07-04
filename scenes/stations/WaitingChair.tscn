@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhcud"]
 size = Vector2(1, 32)
 
-[node name="waiting_chair" type="Area2D" unique_id=1886900249]
+[node name="WaitingChair" type="Area2D" unique_id=1886900249]
 script = ExtResource("1_8qrda")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1506019708]

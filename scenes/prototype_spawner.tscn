@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cd7s18m60x38q" path="res://scripts/prototype_spawner.gd" id="1_83nfe"]
 [ext_resource type="PackedScene" uid="uid://cryu78pe2q2s0" path="res://scenes/characters/donor.tscn" id="2_xjdny"]
-[ext_resource type="PackedScene" uid="uid://bcml4nulm83es" path="res://scenes/stations/waiting_chair.tscn" id="3_nvvue"]
+[ext_resource type="PackedScene" uid="uid://bcml4nulm83es" path="res://scenes/stations/WaitingChair.tscn" id="3_nvvue"]
 
 [sub_resource type="Curve2D" id="Curve2D_duomv"]
 _data = {

@@ -9,4 +9,4 @@ func _ready(disable_prog: bool = false) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	super(delta)

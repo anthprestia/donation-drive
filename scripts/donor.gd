@@ -53,6 +53,9 @@ func set_walker(walker: PathFollow2D) -> void:
 func get_walker() -> PathFollow2D:
 	return self.walker
 	
+func get_next_station() -> GDScript:
+	return self.personal_agenda.get_front()
+	
 func _clear_walker() -> void:
 	self.walker.queue_free()
 	self.walker = null
@@ -70,10 +73,12 @@ func sit(station: Node2D) -> void:
 		self._clear_walker()
 		self.draggable = true
 	
-	self.current_station = station
-	self.personal_agenda.dequeue()
 	# we want to reparent the donor to this station. 
 	reparent(station)
+	
+	self.current_station = station
+	self.personal_agenda.dequeue()
+
 	# reset local position to origin of parent
 	self.position = Vector2.ZERO
 	self.hovered_station = null
