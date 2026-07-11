@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cs8axwxy0ivw1"]
 
-[ext_resource type="Script" uid="uid://kng1vtsfrpxp" path="res://scripts/necromancer.gd" id="1_qfcgf"]
+[ext_resource type="Script" uid="uid://kng1vtsfrpxp" path="res://scripts/Technitian.gd" id="1_qfcgf"]
 [ext_resource type="Texture2D" uid="uid://cir5hjkffvip7" path="res://assets/Necromancer_creativekind-Sheet.png" id="2_coq4t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4k44q"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ce8x5v4a6lmrd" path="res://assets/Gothic Fantasy Cathedral Background.png" id="1_285c3"]
 [ext_resource type="PackedScene" uid="uid://brxktd6vy10ry" path="res://scenes/stations/QuestionTable.tscn" id="3_ctl2h"]
 [ext_resource type="PackedScene" uid="uid://cs8axwxy0ivw1" path="res://scenes/characters/necromancer_pc.tscn" id="4_3vsar"]
-[ext_resource type="PackedScene" uid="uid://dky1pyl70jjed" path="res://scenes/stations/donor_chair.tscn" id="10_jwixh"]
+[ext_resource type="PackedScene" uid="uid://dky1pyl70jjed" path="res://scenes/stations/BloodChair.tscn" id="10_jwixh"]
 
 [node name="DonationDrive" type="Node2D" unique_id=1520982139]
 

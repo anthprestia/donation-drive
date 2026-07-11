@@ -57,7 +57,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hd4j2"]
 size = Vector2(15.041779, 28.3844)
 
-[node name="DonorChair" type="Area2D" unique_id=124031299]
+[node name="BloodChair" type="Area2D" unique_id=124031299]
 script = ExtResource("1_suanq")
 
 [node name="Chair" type="Sprite2D" parent="." unique_id=8392590]

@@ -1,3 +1,4 @@
+class_name ClinicController
 extends Node
 
 # ClinicController
@@ -19,12 +20,16 @@ extends Node
 #idk make all the shit this is likely a tilemaplayer in whatever level it is
 
 @export var donor_scene: PackedScene
-
-# number of waiting 
-var waiting_donors = 0
 @export var spawn_timer: Timer
-var spawn_ready = false
+
 @onready var num_chairs = $WaitingRoom.get_child_count()
+@onready var floor: TileMapLayer = $Floor
+
+var station_queue: Queue
+
+var waiting_donors = 0
+var spawn_ready = false
+var nav_grid : AStarGrid2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,6 +40,20 @@ func _ready() -> void:
 	spawn_timer.timeout.connect(_spawn_timeout)
 	
 	add_child(spawn_timer)
+	
+	nav_grid = AStarGrid2D.new()
+	nav_grid.region = floor.get_used_rect()
+	nav_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	nav_grid.update()
+	
+	self.station_queue = Queue.new()
+	
+	# ClinicController needs to introduce itself to all its station Nodes
+	var stations = get_node("Stations")
+	for station_type in stations.get_children():
+		for station in station_type.get_children():
+			#introduce ourself
+			station.introduce(self)
 	
 	# check the WaitingChair in WaitingRoom and manually attach
 	# each of their "waiting_room_decrement" signals
@@ -69,3 +88,11 @@ func _spawn_mob() -> void:
 
 func _waiting_room_decrement() -> void:
 	self.waiting_donors -= 1
+	
+# takes in a station and queues it up
+func queue_station(station: Station) -> void:
+	self.station_queue.enqueue(station)
+	
+# takes in a station and dequeues it from action list
+func dequeue_station(station: Station) -> void:
+	self.station_queue.dequeue(station)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cyw57kf43fy3k"]
 
-[ext_resource type="Script" uid="uid://cwwabhmnqjmjt" path="res://scripts/PreCheckinChair.gd" id="1_2xuip"]
+[ext_resource type="Script" uid="uid://cwwabhmnqjmjt" path="res://scripts/ScreeningChair.gd" id="1_2xuip"]
 [ext_resource type="Texture2D" uid="uid://bjtpawh3ukx0d" path="res://assets/toilet.png" id="2_ofwxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofwxc"]

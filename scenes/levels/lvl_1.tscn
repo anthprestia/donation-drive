@@ -2,12 +2,12 @@
 
 [ext_resource type="TileSet" uid="uid://cee5d8674ajjr" path="res://assets/tilesets/hospital.tres" id="1_satx0"]
 [ext_resource type="Script" uid="uid://cw00p083tk4l3" path="res://scripts/ClinicController.gd" id="1_v45sh"]
-[ext_resource type="PackedScene" uid="uid://dky1pyl70jjed" path="res://scenes/stations/donor_chair.tscn" id="2_0t8x2"]
+[ext_resource type="PackedScene" uid="uid://dky1pyl70jjed" path="res://scenes/stations/BloodChair.tscn" id="2_0t8x2"]
 [ext_resource type="PackedScene" uid="uid://cryu78pe2q2s0" path="res://scenes/characters/donor.tscn" id="2_l6efi"]
 [ext_resource type="PackedScene" uid="uid://brxktd6vy10ry" path="res://scenes/stations/QuestionTable.tscn" id="3_u5kpk"]
 [ext_resource type="PackedScene" uid="uid://cs8axwxy0ivw1" path="res://scenes/characters/necromancer_pc.tscn" id="5_piajy"]
 [ext_resource type="PackedScene" uid="uid://bcml4nulm83es" path="res://scenes/stations/WaitingChair.tscn" id="6_v45sh"]
-[ext_resource type="PackedScene" uid="uid://cyw57kf43fy3k" path="res://scenes/stations/PreCheckinChair.tscn" id="8_3u0n1"]
+[ext_resource type="PackedScene" uid="uid://cyw57kf43fy3k" path="res://scenes/stations/ScreeningChair.tscn" id="8_3u0n1"]
 
 [sub_resource type="Curve2D" id="Curve2D_l6efi"]
 _data = {
@@ -33,17 +33,25 @@ tile_set = ExtResource("1_satx0")
 tile_map_data = PackedByteArray("AAD///7/BAAAAAEAAAD/////BAAAAAIAAAD//wAABAAAAAMAAAD//wEABAAAAAMAAAD//wIABAAAAAMAAAD//wMABAAAAAMAAAD//wQABAAAAAMAAAD//wUABAAAAAMAAAD//wYABAAAAAMAAAD//wcABAAAAAMAAAD//wgABAAAAAMAAAD//wkABAAAAAMAAAD//woABAAAAAMAAAD//wsABAAAAAMAAAD//wwABAAAAAMAAAD//w0ABAAAAAMAAAD//w4ABAAAAAMAAAD//w8ABAAAAAMAAAD//xAABAAAAAIAAAAAAP7/BAABAAEAAAAAAP//BAABAAIAAAAAABAABAAJAAYAAAABAP7/BAABAAEAAAABAP//BAABAAIAAAABABAABAAHAAAAAAACAP7/BAABAAEAAAACAP//BAABAAIAAAACABAABAAHAAAAAAADAP7/BAABAAEAAAADAP//BAABAAIAAAADABAABAAHAAAAAAAEAP7/BAABAAEAAAAEAP//BAABAAIAAAAEABAABAAHAAAAAAAFAP7/BAABAAEAAAAFAP//BAABAAIAAAAFABAABAAHAAAAAAAGAP7/BAABAAEAAAAGAP//BAABAAIAAAAGABAABAAHAAAAAAAHAP7/BAABAAEAAAAHAP//BAABAAIAAAAHABAABAAHAAAAAAAIAP7/BAABAAEAAAAIAP//BAABAAIAAAAIABAABAAHAAAAAAAJAP7/BAABAAcAAAAJAP//BAADAAMAAAAJABAABAAHAAAAAAAKAP7/BAAAAAcAAAAKAP//BAAAAAQAAAAKABAABAAHAAAAAAALAP7/BAABAAEAAAALAP//BAABAAIAAAALABAABAAHAAAAAAAMAP7/BAABAAEAAAAMAP//BAABAAIAAAAMABAABAAHAAAAAAANAP7/BAABAAEAAAANAP//BAABAAIAAAANABAABAAHAAAAAAAOAP7/BAABAAEAAAAOAP//BAABAAIAAAAOABAABAAHAAAAAAAPAP7/BAABAAEAAAAPAP//BAABAAIAAAAPABAABAAHAAAAAAAQAP7/BAADAAEAAAAQAP//BAADAAIAAAAQAAAABAADAAMAAAAQAAEABAADAAMAAAAQAAIABAADAAMAAAAQAAMABAADAAMAAAAQAAQABAADAAMAAAAQAAUABAADAAMAAAAQAAYABAADAAMAAAAQAAcABAADAAMAAAAQAAgABAADAAMAAAAQAAkABAADAAMAAAAQAAoABAADAAMAAAAQAAsABAADAAMAAAAQAAwABAADAAMAAAAQAA0ABAADAAMAAAAQAA4ABAADAAMAAAAQAA8ABAADAAMAAAAQABAABAADAAIAAAA=")
 tile_set = ExtResource("1_satx0")
 
-[node name="DonorChair" parent="Clinic" unique_id=124031299 instance=ExtResource("2_0t8x2")]
-position = Vector2(67, 113)
+[node name="Stations" type="Node" parent="Clinic" unique_id=244754959]
 
-[node name="QuestionTable1" parent="Clinic" unique_id=474875330 instance=ExtResource("3_u5kpk")]
+[node name="QuestionTables" type="Node" parent="Clinic/Stations" unique_id=2080784208]
+
+[node name="QuestionTable1" parent="Clinic/Stations/QuestionTables" unique_id=474875330 instance=ExtResource("3_u5kpk")]
 position = Vector2(214, 104)
 
-[node name="QuestionTable2" parent="Clinic" unique_id=911696850 instance=ExtResource("3_u5kpk")]
+[node name="QuestionTable2" parent="Clinic/Stations/QuestionTables" unique_id=911696850 instance=ExtResource("3_u5kpk")]
 position = Vector2(205.42, 152.01)
 needs_assistance = true
 
-[node name="PreCheckinChair" parent="Clinic" unique_id=467517005 instance=ExtResource("8_3u0n1")]
+[node name="BloodChairs" type="Node" parent="Clinic/Stations" unique_id=301491445]
+
+[node name="BloodChair" parent="Clinic/Stations/BloodChairs" unique_id=124031299 instance=ExtResource("2_0t8x2")]
+position = Vector2(67, 113)
+
+[node name="ScreeningChairs" type="Node" parent="Clinic/Stations" unique_id=225131863]
+
+[node name="ScreeningChair" parent="Clinic/Stations/ScreeningChairs" unique_id=467517005 instance=ExtResource("8_3u0n1")]
 position = Vector2(128, 111)
 
 [node name="NecromancerPC" parent="Clinic" unique_id=1828071194 instance=ExtResource("5_piajy")]
@@ -70,5 +78,5 @@ position = Vector2(243, -5)
 wait_time = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=235945726]
-position = Vector2(128, 118.355)
-zoom = Vector2(1.64, 1.64)
+offset = Vector2(-7, -32)
+anchor_mode = 0

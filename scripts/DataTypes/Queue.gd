@@ -45,6 +45,35 @@ func dequeue():
 		rear = null
 	self.queueSize -= 1
 	return temp.data
+	
+func dequeue2(data):
+	# if empty then return null
+	# we go through the whole list and remove the first instance of data = QueueNode.data
+	# need prev
+	# current
+	# next
+	
+	if is_empty():
+		return null
+	var prev = null
+	var current = self.front
+	
+	while current != null:
+		var next = current.next
+		# if this is the data/node we want to dequeue
+		if current.data == data:
+			# dequeue/connect prev with next
+			# will this properly free up resources?
+			if prev != null:
+				prev.next = next
+			else:
+				# if prev is null aka this is the front
+				front = current.next
+			self.queueSize -= 1
+			break
+		# if this is not the data/node we're looking for we step over
+		else:
+			current = current.next
 
 class QueueNode:
 	var data = null

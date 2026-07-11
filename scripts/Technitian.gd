@@ -20,3 +20,6 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+
+func move_to(position: Vector2) -> void:
+	pass
