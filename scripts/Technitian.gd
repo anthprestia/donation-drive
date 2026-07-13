@@ -1,12 +1,21 @@
+class_name Technitian
 extends CharacterBody2D
 
 @onready var _animated_sprite = $NecroAnimation
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+
+var clinic: ClinicController
+
+var trained_stations = []
+var current_station: Station = null
+
 
 func _ready() -> void:
 	_animated_sprite.play("idle")
+	
+func introduce(clinic: ClinicController) -> void:
+	self.clinic = clinic
 
 func _physics_process(delta: float) -> void:
 
@@ -17,9 +26,21 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = direction_x * SPEED
 	velocity.y = direction_y * SPEED
-
-
 	move_and_slide()
 
+func finish_work() -> void:
+	self.current_station.progress_complete.disconnect(finish_work)
+	self.current_station = null
+	self.clinic.request_work(self)
+	
+	
+func is_working() -> bool:
+	return current_station != null
+	
+func assign_work(station: Station) -> void:
+	self.current_station = station
+	self.current_station.progress_complete.connect(finish_work)
+	# move_to station 'work tile'
+	
 func move_to(position: Vector2) -> void:
 	pass

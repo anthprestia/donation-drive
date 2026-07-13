@@ -26,6 +26,7 @@ extends Node
 @onready var floor: TileMapLayer = $Floor
 
 var station_queue: Queue
+var worker_queue: Queue
 
 var waiting_donors = 0
 var spawn_ready = false
@@ -47,6 +48,7 @@ func _ready() -> void:
 	nav_grid.update()
 	
 	self.station_queue = Queue.new()
+	self.worker_queue = Queue.new()
 	
 	# ClinicController needs to introduce itself to all its station Nodes
 	var stations = get_node("Stations")
@@ -54,6 +56,11 @@ func _ready() -> void:
 		for station in station_type.get_children():
 			#introduce ourself
 			station.introduce(self)
+			
+	var workers = get_node("Workers")
+	for worker in workers.get_children():
+		worker.introduce(self)
+		worker_queue.enqueue(worker)
 	
 	# check the WaitingChair in WaitingRoom and manually attach
 	# each of their "waiting_room_decrement" signals
@@ -68,6 +75,11 @@ func _process(delta: float) -> void:
 	if self.spawn_ready:
 		_spawn_mob()
 		self.spawn_ready = false
+		
+	# assign work to a tech if there is work to be done.
+	if not station_queue.is_empty():
+		if not worker_queue.is_empty():
+			self.assign_work()
 
 func _spawn_timeout() -> void:
 	if not self.spawn_ready and (num_chairs > waiting_donors):
@@ -98,3 +110,10 @@ func queue_station(station: Station) -> void:
 func dequeue_station(station: Station) -> void:
 	self.station_queue.leave_queue(station)
 	self.station_queue.show_queue()
+	
+func assign_work():
+	# primitive. make sure to do proper checks for training and such
+	self.worker_queue.dequeue().assign_work(self.station_queue.dequeue())
+	
+func request_work(worker: Technitian) -> void:
+	self.worker_queue.enqueue(worker)

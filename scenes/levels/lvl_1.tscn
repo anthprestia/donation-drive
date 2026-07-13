@@ -53,9 +53,6 @@ position = Vector2(67, 113)
 [node name="ScreeningChair" parent="Clinic/Stations/ScreeningChairs" unique_id=467517005 instance=ExtResource("8_3u0n1")]
 position = Vector2(128, 111)
 
-[node name="NecromancerPC" parent="Clinic" unique_id=1828071194 instance=ExtResource("5_piajy")]
-position = Vector2(15, -25)
-
 [node name="EntryPath" type="Path2D" parent="Clinic" unique_id=1460848695]
 curve = SubResource("Curve2D_l6efi")
 
@@ -75,6 +72,11 @@ position = Vector2(243, -5)
 
 [node name="Timer" type="Timer" parent="Clinic" unique_id=951037648]
 wait_time = 5.0
+
+[node name="Workers" type="Node" parent="Clinic" unique_id=63715547]
+
+[node name="NecromancerPC" parent="Clinic/Workers" unique_id=1828071194 instance=ExtResource("5_piajy")]
+position = Vector2(15, -25)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=235945726]
 offset = Vector2(-137.035, -32)
