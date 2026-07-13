@@ -9,7 +9,9 @@ extends Area2D
 # donor sat, finished, --- | F ; F
 
 # can use the collision shape we defined in the scene tree
-@onready var checker: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+var collision_checker: CollisionShape2D
+
 
 # need a var with the ClinicController we're currently a part of
 # C.C. should 'introduce' itself to us shortly after _ready()
@@ -17,6 +19,7 @@ var clinic: ClinicController
 
 # use this as a boolean too ig, if donor else null
 var donor_sat: Donor
+var mouse_hovered: bool
 
 #flags for keeping state/understanding comms with ClinicController
 var needs_assistance: bool
@@ -39,6 +42,9 @@ func _ready(disable_prog: bool = false) -> void:
 	progress = 0
 	goal = 100
 	increment = 5
+	
+	self.mouse_entered.connect(self._on_mouse_entered)
+	self.mouse_exited.connect(self._on_mouse_exited)
 	
 func _process(delta: float) -> void:
 	# if a donor is sat 
@@ -64,7 +70,7 @@ func _process(delta: float) -> void:
 						notified = true
 		# if needs_assistance
 		else:
-			if Input.is_action_just_pressed("click"):
+			if self.mouse_hovered and Input.is_action_just_pressed("click"):
 				# send a message to the clinic that we need to be queued up
 				if self.in_line:
 					self.in_line = false
@@ -83,6 +89,12 @@ func _on_body_exited(body: Node2D) -> void:
 	if body is Donor:
 		if is_available():
 			body.station_withdraw(self)
+			
+func _on_mouse_entered():
+	self.mouse_hovered = true
+	
+func _on_mouse_exited():
+	self.mouse_hovered = false
 			
 # function called by the parent ClinicController on all of its stations
 # during parent clinic's _ready() function

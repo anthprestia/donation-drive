@@ -23,5 +23,6 @@ centered = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=859957691]
 anchor_mode = 0
+zoom = Vector2(7.575, 7.575)
 
 [connection signal="input_event" from="Node2D" to="." method="_on_node_2d_input_event"]

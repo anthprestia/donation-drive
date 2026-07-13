@@ -92,7 +92,9 @@ func _waiting_room_decrement() -> void:
 # takes in a station and queues it up
 func queue_station(station: Station) -> void:
 	self.station_queue.enqueue(station)
+	self.station_queue.show_queue()
 	
 # takes in a station and dequeues it from action list
 func dequeue_station(station: Station) -> void:
-	self.station_queue.dequeue(station)
+	self.station_queue.leave_queue(station)
+	self.station_queue.show_queue()

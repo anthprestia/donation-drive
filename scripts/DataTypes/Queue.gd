@@ -36,17 +36,21 @@ func enqueue(data) -> void:
 		rear = new_node
 	self.queueSize += 1
 
+# dequeue and return data element
 func dequeue():
+	# if empty, nothing to return
 	if is_empty():
 		return null
 	var temp: QueueNode = front
 	front = temp.next
+	# if front is null so is the rear cuz nothing is in
 	if front == null:
 		rear = null
 	self.queueSize -= 1
+	# return data from front
 	return temp.data
 	
-func dequeue2(data):
+func leave_queue(data=null):
 	# if empty then return null
 	# we go through the whole list and remove the first instance of data = QueueNode.data
 	# need prev
@@ -55,6 +59,7 @@ func dequeue2(data):
 	
 	if is_empty():
 		return null
+		
 	var prev = null
 	var current = self.front
 	
@@ -70,10 +75,25 @@ func dequeue2(data):
 				# if prev is null aka this is the front
 				front = current.next
 			self.queueSize -= 1
-			break
+			return
 		# if this is not the data/node we're looking for we step over
 		else:
+			prev = current
 			current = current.next
+	self.rear = prev
+	
+func show_queue() -> void:
+	
+	var q_string = '['
+	var q_data = self.front
+	
+	for n in self.queueSize:
+		q_string += str(q_data.data) + ', '
+		q_data = q_data.next
+	
+	q_string += ']'
+	print(q_string)
+
 
 class QueueNode:
 	var data = null

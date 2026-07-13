@@ -42,7 +42,6 @@ position = Vector2(214, 104)
 
 [node name="QuestionTable2" parent="Clinic/Stations/QuestionTables" unique_id=911696850 instance=ExtResource("3_u5kpk")]
 position = Vector2(205.42, 152.01)
-needs_assistance = true
 
 [node name="BloodChairs" type="Node" parent="Clinic/Stations" unique_id=301491445]
 
@@ -78,5 +77,6 @@ position = Vector2(243, -5)
 wait_time = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=235945726]
-offset = Vector2(-7, -32)
+offset = Vector2(-137.035, -32)
 anchor_mode = 0
+zoom = Vector2(2.125, 2.125)
