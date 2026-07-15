@@ -9,8 +9,8 @@ func _init(list_to_queue: Array = []) -> void:
 	queueSize = 0
 	
 	if not list_to_queue.is_empty():
-		for station in list_to_queue:
-			enqueue(station)
+		for data in list_to_queue:
+			enqueue(data)
 	
 func is_empty() -> bool:
 	return self.front == null
@@ -37,7 +37,7 @@ func enqueue(data) -> void:
 	self.queueSize += 1
 
 # dequeue and return data element
-func dequeue():
+func pop():
 	# if empty, nothing to return
 	if is_empty():
 		return null
@@ -50,7 +50,7 @@ func dequeue():
 	# return data from front
 	return temp.data
 	
-func leave_queue(data=null):
+func dequeue(data=null):
 	# if empty then return null
 	# we go through the whole list and remove the first instance of data = QueueNode.data
 	# need prev
@@ -74,13 +74,18 @@ func leave_queue(data=null):
 			else:
 				# if prev is null aka this is the front
 				front = current.next
+				
+			# then we're at the back already so we need to update the rear as the previous
+			if next == null:
+				self.rear = prev
+				
 			self.queueSize -= 1
 			return
 		# if this is not the data/node we're looking for we step over
 		else:
 			prev = current
 			current = current.next
-	self.rear = prev
+	#self.rear = prev
 	
 func show_queue() -> void:
 	

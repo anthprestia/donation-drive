@@ -76,7 +76,7 @@ wait_time = 5.0
 [node name="Workers" type="Node" parent="Clinic" unique_id=63715547]
 
 [node name="NecromancerPC" parent="Clinic/Workers" unique_id=1828071194 instance=ExtResource("5_piajy")]
-position = Vector2(15, -25)
+position = Vector2(22, 27)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=235945726]
 offset = Vector2(-137.035, -32)

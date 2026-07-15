@@ -23,7 +23,7 @@ extends Node
 @export var spawn_timer: Timer
 
 @onready var num_chairs = $WaitingRoom.get_child_count()
-@onready var floor: TileMapLayer = $Floor
+@onready var floor_map: TileMapLayer = $Floor
 
 var station_queue: Queue
 var worker_queue: Queue
@@ -43,7 +43,7 @@ func _ready() -> void:
 	add_child(spawn_timer)
 	
 	nav_grid = AStarGrid2D.new()
-	nav_grid.region = floor.get_used_rect()
+	nav_grid.region = floor_map.get_used_rect()
 	nav_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	nav_grid.update()
 	
@@ -101,6 +101,9 @@ func _spawn_mob() -> void:
 func _waiting_room_decrement() -> void:
 	self.waiting_donors -= 1
 	
+func get_floor():
+	return self.floor_map
+	
 # takes in a station and queues it up
 func queue_station(station: Station) -> void:
 	self.station_queue.enqueue(station)
@@ -108,12 +111,19 @@ func queue_station(station: Station) -> void:
 	
 # takes in a station and dequeues it from action list
 func dequeue_station(station: Station) -> void:
-	self.station_queue.leave_queue(station)
+	self.station_queue.dequeue(station)
 	self.station_queue.show_queue()
 	
 func assign_work():
 	# primitive. make sure to do proper checks for training and such
-	self.worker_queue.dequeue().assign_work(self.station_queue.dequeue())
+	var worker = self.worker_queue.pop()
+	var station = self.station_queue.pop()
+	var id_path = nav_grid.get_id_path(
+		floor_map.local_to_map(worker.global_position),
+		floor_map.local_to_map(station.global_position)
+	).slice(1)
+	
+	worker.assign_work(station, id_path)
 	
 func request_work(worker: Technitian) -> void:
 	self.worker_queue.enqueue(worker)

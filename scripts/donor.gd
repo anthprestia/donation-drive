@@ -77,7 +77,8 @@ func sit(station: Node2D) -> void:
 	reparent(station)
 	
 	self.current_station = station
-	self.personal_agenda.dequeue()
+	
+	self.personal_agenda.pop() # TODO - THIS SHOULD ONLY HAPPEN AFTER COMPLETED AT STATION
 
 	# reset local position to origin of parent
 	self.position = Vector2.ZERO

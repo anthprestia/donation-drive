@@ -75,12 +75,12 @@ top_level = true
 script = ExtResource("1_qfcgf")
 
 [node name="NecroAnimation" type="AnimatedSprite2D" parent="." unique_id=1134713326]
+position = Vector2(0, -53.685)
 sprite_frames = SubResource("SpriteFrames_3bjls")
 animation = &"idle"
 frame = 1
 frame_progress = 0.2419991
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=996903588]
-position = Vector2(0, 45)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_lhe2g")
