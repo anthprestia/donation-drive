@@ -22,7 +22,8 @@ var donor_sat: Donor
 var mouse_hovered: bool
 
 #flags for keeping state/understanding comms with ClinicController
-var needs_assistance: bool
+var working: bool
+var finished: bool = false
 var in_line: bool
 
 # progress bar logic
@@ -31,14 +32,11 @@ var progress: int
 var goal: int
 var increment: int
 
-# notified will tell if we have already emitted this completed station cycle 
-# so we dont send multiple signals every tick
-var notified: bool = false
-signal progress_complete
+signal work_complete
 
 func _ready(disable_prog: bool = false) -> void:
 	self.disable_prog = disable_prog
-	needs_assistance = false
+	working = false
 	progress = 0
 	goal = 100
 	increment = 5
@@ -55,20 +53,21 @@ func _process(delta: float) -> void:
 	# if donor_sat
 	if not is_available():
 		# if station has been stated/assisted:
-		if not needs_assistance:
-			# if theres a progress bar for this station
-			if not disable_prog:
-				# increment 
+		if working:
+			if disable_prog:
+				working = false
+			else:
 				if progress < goal:
 					self.increment_progress()
 				else:
 					if progress > goal:
 						progress = goal
-					if not notified:
-						print("GOAL REACHED!")
-						progress_complete.emit()
-						notified = true
-		# if needs_assistance
+					
+					print("GOAL REACHED!")
+					work_complete.emit()
+					working = false
+					finished = true
+					self.donor_sat.make_draggable()
 		else:
 			if self.mouse_hovered and Input.is_action_just_pressed("click"):
 				# send a message to the clinic that we need to be queued up
@@ -76,9 +75,37 @@ func _process(delta: float) -> void:
 					self.in_line = false
 					clinic.dequeue_station(self)
 				else:
-					self.in_line = true
-					clinic.queue_station(self)
+					# if we're not in line but we're already finished
+					# do NOT requeue us without explicit instructions otherwise
+					if not self.finished:
+						self.in_line = true
+						clinic.queue_station(self)
 
+# function called by the parent ClinicController on all of its stations
+# during parent clinic's _ready() function
+func introduce(clinic: ClinicController) -> void:
+	self.clinic = clinic
+
+func is_available() -> bool:
+	return donor_sat == null
+
+func sit(donor: Donor) -> void:
+	self.donor_sat = donor
+	#donor.sit(self)
+	
+func start_working() -> void:
+	self.in_line = false
+	self.working = true
+	
+func increment_progress() -> void:
+	print("Progress: " + str(self.progress) + " / " + str(self.goal))
+	self.progress = self.progress + self.increment
+
+func get_up(donor: Donor) -> void:
+	if self.donor_sat == donor:
+		self.donor_sat = null
+		self.finished = false
+		
 func _on_body_entered(body: Node2D) -> void:
 	# check if its a donor walking past the chair
 	if body is Donor:
@@ -95,26 +122,3 @@ func _on_mouse_entered():
 	
 func _on_mouse_exited():
 	self.mouse_hovered = false
-			
-# function called by the parent ClinicController on all of its stations
-# during parent clinic's _ready() function
-func introduce(clinic: ClinicController) -> void:
-	self.clinic = clinic
-
-func is_available() -> bool:
-	return donor_sat == null
-
-func sit(donor: Donor) -> void:
-	self.donor_sat = donor
-	self.needs_assistance = true
-	#donor.sit(self)
-	
-func increment_progress() -> void:
-	print("Progress: " + str(self.progress) + " / " + str(self.goal))
-	self.progress = self.progress + self.increment
-
-func get_up(donor: Donor) -> void:
-	if self.donor_sat == donor:
-		self.donor_sat = null
-		self.needs_assistance = false
-		self.notified = false

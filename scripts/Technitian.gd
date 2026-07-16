@@ -20,6 +20,12 @@ func _ready() -> void:
 func introduce(clinic: ClinicController) -> void:
 	self.clinic = clinic
 	self.walkable_floor = clinic.get_floor()
+	
+func _process(delta: float) -> void:
+	# if we're done walking but we still have a station to work on
+	if self.current_walk_path.is_empty() and self.current_station != null:
+		self.current_station.start_working()
+		pass
 
 func _physics_process(delta: float) -> void:
 	# TODO update the tech's position on the navgrid to middle of next tile
@@ -44,18 +50,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	"""
 
-func finish_work() -> void:
-	self.current_station.progress_complete.disconnect(finish_work)
+func _finish_work() -> void:
+	self.current_station.work_complete.disconnect(_finish_work)
 	self.current_station = null
 	self.clinic.request_work(self)
-	
 	
 func is_working() -> bool:
 	return current_station != null
 	
 func assign_work(station: Station, id_path: Array[Vector2i]) -> void:
 	self.current_station = station
-	self.current_station.progress_complete.connect(finish_work)
+	self.current_station.work_complete.connect(_finish_work)
 	
 	# get walking path to station
 	self._walk_along(id_path)

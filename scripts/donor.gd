@@ -72,6 +72,8 @@ func sit(station: Node2D) -> void:
 	if self.walker:
 		self._clear_walker()
 		self.draggable = true
+	else:
+		self.draggable = false
 	
 	# we want to reparent the donor to this station. 
 	reparent(station)
@@ -83,6 +85,9 @@ func sit(station: Node2D) -> void:
 	# reset local position to origin of parent
 	self.position = Vector2.ZERO
 	self.hovered_station = null
+	
+func make_draggable():
+	self.draggable = true
 	
 func drag_donor() -> void:
 	self.position =  get_global_mouse_position() + mouse_offset
